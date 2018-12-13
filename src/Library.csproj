@@ -13,8 +13,9 @@
     <PackageId>MusicFM.hu</PackageId>
     <Product>MusicFM.hu</Product>
     <NeutralLanguage>en</NeutralLanguage>
-    <PackageReleaseNotes>First stable release. The enty point to the library is the MusicFM class.</PackageReleaseNotes>
+    <PackageReleaseNotes>First stable release. The enty point to the library is the MusicFM class. NuGet package now contains the XML documentation.</PackageReleaseNotes>
     <Description>MusicFM.hu is the one of the most popular radio station in Hungary. This is a .NET Standard 2.0 library to can access the Timeline, every MusicKIller DJ's tracklist and the two chart (TOP 20 and TOP 50).</Description>
+    <Version>1.0.1.1</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -23,7 +24,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>D:\GitHub\MusicFM\src\MusicFM\MusicFM.xml</DocumentationFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
