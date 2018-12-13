@@ -3,6 +3,12 @@
 MusicFM.hu is the one of the most popular radio station in Hungary. This is a .NET Standard 2.0 library to can access the Timeline,
 every MusicKIller DJ's tracklist and the two chart (TOP 20 and TOP 50).
 
+### Install
+via [NuGet](https://www.nuget.org/packages/MusicFM.hu/)
+````
+PM > Install-Package MusicFM.hu
+````
+
 ### Quick start
 
 That's all You need and can use with this library. Copied from the sample project:
