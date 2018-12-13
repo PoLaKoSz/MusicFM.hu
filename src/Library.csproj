@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>PoLaKoSz.MusicFM</RootNamespace>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Authors>Tom PoLáKoSz</Authors>
+    <PackageProjectUrl>https://github.com/PoLaKoSz/MusicFM.hu</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/PoLaKoSz/MusicFM.hu</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>musicfm netstandard wrapper api scraper musicfm.hu</PackageTags>
+    <PackageLicenseUrl>https://github.com/PoLaKoSz/MusicFM.hu/LICENCE</PackageLicenseUrl>
+    <PackageId>MusicFM.hu</PackageId>
+    <Product>MusicFM.hu</Product>
+    <NeutralLanguage>en</NeutralLanguage>
+    <PackageReleaseNotes>First stable release. The enty point to the library is the MusicFM class.</PackageReleaseNotes>
+    <Description>MusicFM.hu is the one of the most popular radio station in Hungary. This is a .NET Standard 2.0 library to can access the Timeline, every MusicKIller DJ's tracklist and the two chart (TOP 20 and TOP 50).</Description>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>D:\GitHub\MusicFM\src\MusicFM\MusicFM.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.8.11" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+</Project>

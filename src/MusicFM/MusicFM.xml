@@ -1,0 +1,694 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Library</name>
+    </assembly>
+    <members>
+        <member name="T:PoLaKoSz.MusicFM.DataAccessLayer.Web.EndPoint">
+            <summary>
+            Simple web access layer only for the bare minimum.
+            </summary>
+        </member>
+        <member name="F:PoLaKoSz.MusicFM.DataAccessLayer.Web.EndPoint.Client">
+            <summary>
+            This instance handles the web access.
+            </summary>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.DataAccessLayer.Web.EndPoint.#ctor(System.String,PoLaKoSz.MusicFM.DataAccessLayer.Web.IHttpClient)">
+            <summary>
+            Initialize a new Instance.
+            </summary>
+            <param name="endPoint">Non null string.</param>
+            <param name="httpClient">Non null object.</param>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.DataAccessLayer.Web.EndPoint.GetAsync(System.String)">
+            <summary>
+            Send a GET request to the specified Uri as an asynchronous operation.
+            </summary>
+            <param name="path">End path where the request is sent to.</param>
+            <exception cref="T:System.Net.Http.HttpRequestException">The request failed due to an underlying issue
+            such as network connectivity, DNS failure, server certificate validation, timeout or
+            other than HTTP 200 response.</exception>
+            <exception cref="T:System.InvalidCastException">An unknown Exception received from the server.</exception>
+        </member>
+        <member name="T:PoLaKoSz.MusicFM.DataAccessLayer.Web.HttpClient">
+            <summary>
+            Built-in client to access the web.
+            </summary>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.DataAccessLayer.Web.HttpClient.#ctor">
+            <summary>
+            Initialize an instance.
+            </summary>
+        </member>
+        <member name="T:PoLaKoSz.MusicFM.DataAccessLayer.Web.IHttpClient">
+            <summary>
+            Implementation to access the web.
+            </summary>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.DataAccessLayer.Web.IHttpClient.GetAsync(System.Uri)">
+            <summary>
+            Send a GET request to the specified Uri as an asynchronous operation.
+            </summary>
+            <param name="requestUri">The Uri the request is sent to.</param>
+            <returns>The task object representing the asynchronous operation.</returns>
+            <exception cref="T:System.ArgumentNullException">The requestUri was null.</exception>
+            <exception cref="T:System.Net.Http.HttpRequestException">The request failed due to an underlying issue such as network connectivity, DNS
+            failure, server certificate validation or timeout.</exception>
+        </member>
+        <member name="T:PoLaKoSz.MusicFM.EndPoints.Charts">
+            <summary>
+            Container to access any chart on MusicFM.hu.
+            </summary>
+        </member>
+        <member name="P:PoLaKoSz.MusicFM.EndPoints.Charts.Top20">
+            <summary>
+            Gets access to the <see cref="T:PoLaKoSz.MusicFM.EndPoints.Top20Chart"/> instance.
+            </summary>
+        </member>
+        <member name="P:PoLaKoSz.MusicFM.EndPoints.Charts.Top50">
+            <summary>
+            Gets access to the <see cref="T:PoLaKoSz.MusicFM.EndPoints.Top50Chart"/> instance.
+            </summary>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.Charts.#ctor(PoLaKoSz.MusicFM.DataAccessLayer.Web.IHttpClient)">
+            <summary>
+            Initialize a new instance to access the charts.
+            </summary>
+            <param name="httpClient">Non null object.</param>
+        </member>
+        <member name="T:PoLaKoSz.MusicFM.EndPoints.ChartBase">
+            <summary>
+            Base class for every chart.
+            </summary>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.ChartBase.#ctor(System.Int32,PoLaKoSz.MusicFM.DataAccessLayer.Web.IHttpClient)">
+            <summary>
+            Initialize a new instance.
+            </summary>
+            <param name="chartType">20 or 50.</param>
+            <param name="httpClient">Non null object.</param>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.ChartBase.All">
+            <summary>
+            Get the tracklist from the page.
+            </summary>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Track"/> collection.</returns>
+            <exception cref="T:HtmlAgilityPack.NodeNotFoundException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.ChartBase.All(PoLaKoSz.MusicFM.Parsers.ICleaner)">
+            <summary>
+            Get the tracklist from the page.
+            </summary>
+            <param name="cleaner">Non null custom cleaning object.</param>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Track"/> collection.</returns>
+            <exception cref="T:HtmlAgilityPack.NodeNotFoundException"></exception>
+        </member>
+        <member name="T:PoLaKoSz.MusicFM.EndPoints.Top20Chart">
+            <summary>
+            Class to access the TOP20 chart.
+            </summary>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.Top20Chart.#ctor(PoLaKoSz.MusicFM.DataAccessLayer.Web.IHttpClient)">
+            <summary>
+            Initialize a new instance.
+            </summary>
+            <param name="httpClient">Not null object.</param>
+        </member>
+        <member name="T:PoLaKoSz.MusicFM.EndPoints.Top50Chart">
+            <summary>
+            Class to access the TOP50 chart.
+            </summary>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.Top50Chart.#ctor(PoLaKoSz.MusicFM.DataAccessLayer.Web.IHttpClient)">
+            <summary>
+            Initialize a new instance.
+            </summary>
+            <param name="httpClient">Not null object.</param>
+        </member>
+        <member name="T:PoLaKoSz.MusicFM.EndPoints.HomePage">
+            <summary>
+            Container to access the main page of the MusicFM.hu.
+            </summary>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.HomePage.#ctor(PoLaKoSz.MusicFM.DataAccessLayer.Web.IHttpClient)">
+            <summary>
+            Initialize a new instance.
+            </summary>
+            <param name="httpClient">Not null object.</param>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.HomePage.Timeline">
+            <summary>
+            Get a clean tracklist from the timeline.
+            </summary>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Track"/> collection.</returns>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.HomePage.Timeline(PoLaKoSz.MusicFM.Parsers.ICleaner)">
+            <summary>
+            Get the tracklist from the timeline with a
+            custom cleaning mechanism.
+            </summary>
+            <param name="cleaner">Non null object which responsible
+            to clean the parsed input.</param>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Track"/> collection.</returns>
+            <exception cref="T:HtmlAgilityPack.NodeNotFoundException"></exception>
+        </member>
+        <member name="T:PoLaKoSz.MusicFM.EndPoints.MusicKiller">
+            <summary>
+            Access every MusicKiller DJ's tracklist within this object.
+            </summary>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.#ctor(System.String,PoLaKoSz.MusicFM.DataAccessLayer.Web.IHttpClient)">
+            <summary>
+            Initialize an instance to access every MusicKiller
+            DJ's tracklist.
+            </summary>
+            <param name="endPoint">Non null string representing the beginning of the URL.</param>
+            <param name="httpClient">Non null object to access the web.</param>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.Antonyo">
+            <summary>
+            Get Antonyo's tracklist cleaned with the default rules.
+            </summary>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.Antonyo(PoLaKoSz.MusicFM.Parsers.ICleaner)">
+            <summary>
+            Get _______________________'s tracklist with a custom cleaning method.
+            </summary>
+            <param name="cleaner">Non null custom cleaning object.</param>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.ArminVanBuuren">
+            <summary>
+            Get Armin Van Buuren's tracklist cleaned with the default rules.
+            </summary>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.ArminVanBuuren(PoLaKoSz.MusicFM.Parsers.ICleaner)">
+            <summary>
+            Get Armin Van Buuren's tracklist with a custom cleaning method.
+            </summary>
+            <param name="cleaner">Non null custom cleaning object.</param>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.DannyL">
+            <summary>
+            Get DannyL's tracklist cleaned with the default rules.
+            </summary>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.DannyL(PoLaKoSz.MusicFM.Parsers.ICleaner)">
+            <summary>
+            Get DannyL's tracklist with a custom cleaning method.
+            </summary>
+            <param name="cleaner">Non null custom cleaning object.</param>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.DeepLison">
+            <summary>
+            Get Deep Lison's tracklist cleaned with the default rules.
+            </summary>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.DeepLison(PoLaKoSz.MusicFM.Parsers.ICleaner)">
+            <summary>
+            Get Deep Lison's tracklist with a custom cleaning method.
+            </summary>
+            <param name="cleaner">Non null custom cleaning object.</param>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.DjNara">
+            <summary>
+            Get DJ Nara's tracklist cleaned with the default rules.
+            </summary>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.DjNara(PoLaKoSz.MusicFM.Parsers.ICleaner)">
+            <summary>
+            Get DJ Nara's tracklist with a custom cleaning method.
+            </summary>
+            <param name="cleaner">Non null custom cleaning object.</param>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.DonDiablo">
+            <summary>
+            Get Don Diablo's tracklist cleaned with the default rules.
+            </summary>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.DonDiablo(PoLaKoSz.MusicFM.Parsers.ICleaner)">
+            <summary>
+            Get DonDiablo's tracklist with a custom cleaning method.
+            </summary>
+            <param name="cleaner">Non null custom cleaning object.</param>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.Hardwell">
+            <summary>
+            Get Hardwell's tracklist cleaned with the default rules.
+            </summary>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.Hardwell(PoLaKoSz.MusicFM.Parsers.ICleaner)">
+            <summary>
+            Get Hardwell's tracklist with a custom cleaning method.
+            </summary>
+            <param name="cleaner">Non null custom cleaning object.</param>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.Jovan">
+            <summary>
+            Get Jovan's tracklist cleaned with the default rules.
+            </summary>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.Jovan(PoLaKoSz.MusicFM.Parsers.ICleaner)">
+            <summary>
+            Get Jovan's tracklist with a custom cleaning method.
+            </summary>
+            <param name="cleaner">Non null custom cleaning object.</param>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.Lauer">
+            <summary>
+            Get Lauer's tracklist cleaned with the default rules.
+            </summary>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.Lauer(PoLaKoSz.MusicFM.Parsers.ICleaner)">
+            <summary>
+            Get Lauer's tracklist with a custom cleaning method.
+            </summary>
+            <param name="cleaner">Non null custom cleaning object.</param>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.Newl">
+            <summary>
+            Get Newl's tracklist cleaned with the default rules.
+            </summary>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.Newl(PoLaKoSz.MusicFM.Parsers.ICleaner)">
+            <summary>
+            Get Newl's tracklist with a custom cleaning method.
+            </summary>
+            <param name="cleaner">Non null custom cleaning object.</param>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.NigelStately">
+            <summary>
+            Get Nigel Stately's tracklist cleaned with the default rules.
+            </summary>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.NigelStately(PoLaKoSz.MusicFM.Parsers.ICleaner)">
+            <summary>
+            Get Nigel Stately's tracklist with a custom cleaning method.
+            </summary>
+            <param name="cleaner">Non null custom cleaning object.</param>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.OliverHeldens">
+            <summary>
+            Get Oliver Heldens's tracklist cleaned with the default rules.
+            </summary>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.OliverHeldens(PoLaKoSz.MusicFM.Parsers.ICleaner)">
+            <summary>
+            Get Oliver Heldens's tracklist with a custom cleaning method.
+            </summary>
+            <param name="cleaner">Non null custom cleaning object.</param>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.Pixa">
+            <summary>
+            Get Pixa's tracklist cleaned with the default rules.
+            </summary>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.Pixa(PoLaKoSz.MusicFM.Parsers.ICleaner)">
+            <summary>
+            Get Pixa's tracklist with a custom cleaning method.
+            </summary>
+            <param name="cleaner">Non null custom cleaning object.</param>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.Tiesto">
+            <summary>
+            Get Tiësto's tracklist cleaned with the default rules.
+            </summary>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.Tiesto(PoLaKoSz.MusicFM.Parsers.ICleaner)">
+            <summary>
+            Get Tiesto's tracklist with a custom cleaning method.
+            </summary>
+            <param name="cleaner">Non null custom cleaning object.</param>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.Willcox">
+            <summary>
+            Get Willcox's tracklist cleaned with the default rules.
+            </summary>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.Willcox(PoLaKoSz.MusicFM.Parsers.ICleaner)">
+            <summary>
+            Get Willcox's tracklist with a custom cleaning method.
+            </summary>
+            <param name="cleaner">Non null custom cleaning object.</param>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.Yamina">
+            <summary>
+            Get Yamina's tracklist cleaned with the default rules.
+            </summary>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.Yamina(PoLaKoSz.MusicFM.Parsers.ICleaner)">
+            <summary>
+            Get Yamina's tracklist with a custom cleaning method.
+            </summary>
+            <param name="cleaner">Non null custom cleaning object.</param>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.Zoohacker">
+            <summary>
+            Get Zoohacker's tracklist cleaned with the default rules.
+            </summary>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKiller.Zoohacker(PoLaKoSz.MusicFM.Parsers.ICleaner)">
+            <summary>
+            Get Zoohacker's tracklist with a custom cleaning method.
+            </summary>
+            <param name="cleaner">Non null custom cleaning object.</param>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> collection.</returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="T:PoLaKoSz.MusicFM.EndPoints.MusicKillers">
+            <summary>
+            Access every MusicKiller DJ's tracklist within this object.
+            </summary>
+        </member>
+        <member name="P:PoLaKoSz.MusicFM.EndPoints.MusicKillers.TracklistFrom">
+            <summary>
+            Be careful with these tracklists because it can contains
+            interesting <see cref="T:PoLaKoSz.MusicFM.Models.Music"/>s. Non null object.
+            </summary>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.EndPoints.MusicKillers.#ctor(PoLaKoSz.MusicFM.DataAccessLayer.Web.IHttpClient)">
+            <summary>
+            Initialize an instance to access every MusicKiller
+            DJ's tracklist.
+            </summary>
+            <param name="httpClient">Non null object to access the web.</param>
+        </member>
+        <member name="T:PoLaKoSz.MusicFM.Models.Music">
+            <summary>
+            Used instead of the <see cref="T:PoLaKoSz.MusicFM.Models.Track"/> when the artist and the
+            song title is not seperated in a recognizable format.
+            </summary>
+        </member>
+        <member name="P:PoLaKoSz.MusicFM.Models.Music.Name">
+            <summary>
+            Full name of the song (artist(s) name + song title).
+            </summary>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.Models.Music.#ctor(System.String)">
+            <summary>
+            Initialize a new instance.
+            </summary>
+            <param name="name">Non null string.</param>
+        </member>
+        <member name="T:PoLaKoSz.MusicFM.Models.Track">
+            <summary>
+            Used when the artist(s) name and the song title seperated in
+            a recognizable format. When it's note, use the <see cref="T:PoLaKoSz.MusicFM.Models.Music"/> class.
+            </summary>
+        </member>
+        <member name="P:PoLaKoSz.MusicFM.Models.Track.Artist">
+            <summary>
+            The artist(s) name of the track.
+            </summary>
+        </member>
+        <member name="P:PoLaKoSz.MusicFM.Models.Track.Name">
+            <summary>
+            Name of the track.
+            </summary>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.Models.Track.#ctor(System.String,System.String)">
+            <summary>
+            Initialize a new instance.
+            </summary>
+            <param name="artist">Non null string.</param>
+            <param name="name">Non null string.</param>
+        </member>
+        <member name="T:PoLaKoSz.MusicFM.MusicFM">
+            <summary>
+            This class is the main entry point for the library.
+            </summary>
+        </member>
+        <member name="P:PoLaKoSz.MusicFM.MusicFM.HomePage">
+            <summary>
+            Gets the <see cref="T:PoLaKoSz.MusicFM.EndPoints.HomePage"/> instance.
+            </summary>
+        </member>
+        <member name="P:PoLaKoSz.MusicFM.MusicFM.Charts">
+            <summary>
+            Gets the <see cref="T:PoLaKoSz.MusicFM.EndPoints.Charts"/> instance.
+            </summary>
+        </member>
+        <member name="P:PoLaKoSz.MusicFM.MusicFM.MusicKillers">
+            <summary>
+            Gets the <see cref="P:PoLaKoSz.MusicFM.MusicFM.MusicKillers"/> instance.
+            </summary>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.MusicFM.#ctor">
+            <summary>
+            Initialize a new instance.
+            </summary>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.MusicFM.#ctor(PoLaKoSz.MusicFM.DataAccessLayer.Web.IHttpClient)">
+            <summary>
+            Initialize a new instance with a custom
+            <see cref="T:PoLaKoSz.MusicFM.DataAccessLayer.Web.IHttpClient"/>.
+            </summary>
+            <param name="httpClient">Not null object.</param>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.Parsers.ChartsParser.Process(System.String,PoLaKoSz.MusicFM.Parsers.ICleaner)">
+            <summary>
+            Extract the <see cref="T:PoLaKoSz.MusicFM.Models.Track"/>s from the HTML.
+            </summary>
+            <param name="sourceCode">Non null string.</param>
+            <param name="clean">Non null custom cleaning object.</param>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Track"/> collection.</returns>
+            <exception cref="T:HtmlAgilityPack.NodeNotFoundException"></exception>
+        </member>
+        <member name="T:PoLaKoSz.MusicFM.Parsers.Cleaner">
+            <summary>
+            Built-in implementation to clean the source code from the junk.
+            </summary>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.Parsers.Cleaner.RemoveImageToken(System.Uri)">
+            <summary>
+            Removes the token from the given image URL's end.
+            </summary>
+            <param name="imageURL">Non null path to the image.</param>
+            <returns>Cleaned image URL.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.Parsers.Cleaner.IsNotArtist(System.String)">
+            <summary>
+            Determinate that the given artist is a person
+            or a show (Music Killers, Road Show, etc.).
+            </summary>
+            <param name="artist">Non null artist name.</param>
+            <returns>True if the parameter is a show.</returns>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.Parsers.Cleaner.ArtistName(System.String)">
+            <summary>
+            Removes the (MK DJ) prefix from the string.
+            </summary>
+            <param name="name">Non null string.</param>
+            <returns>Non null string.</returns>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.Parsers.Cleaner.MusicPrefixes(System.String)">
+            <summary>
+            Removes characters from the start of the parameter string.
+            </summary>
+            <param name="musicName">Non null string.</param>
+            <returns>Non null string.</returns>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.Parsers.Cleaner.MusicPostfixes(System.String)">
+            <summary>
+            Removes characters from the end of the parameter string.
+            </summary>
+            <param name="musicName">Non null string.</param>
+            <returns>Non null string.</returns>
+        </member>
+        <member name="T:PoLaKoSz.MusicFM.Parsers.ICleaner">
+            <summary>
+            Parsing logic how the junk be removed from the source code.
+            </summary>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.Parsers.ICleaner.RemoveImageToken(System.Uri)">
+            <summary>
+            Removes the token from the given image URL's end.
+            </summary>
+            <param name="imageURL">Non null path to the image.</param>
+            <returns>Cleaned image URL.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.Parsers.ICleaner.IsNotArtist(System.String)">
+            <summary>
+            Determinate that the given artist is a person
+            or a show (Music Killers, Road Show, etc.).
+            </summary>
+            <param name="musicName">Non null string.</param>
+            <returns>True if the parameter is a show.</returns>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.Parsers.ICleaner.ArtistName(System.String)">
+            <summary>
+            Removes the (MK DJ) prefix from the string.
+            </summary>
+            <param name="name">Non null string.</param>
+            <returns>Non null string.</returns>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.Parsers.ICleaner.MusicPrefixes(System.String)">
+            <summary>
+            Removes characters from the start of the parameter string.
+            </summary>
+            <param name="musicName">Non null string.</param>
+            <returns>Non null string.</returns>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.Parsers.ICleaner.MusicPostfixes(System.String)">
+            <summary>
+            Removes characters from the end of the parameter string.
+            </summary>
+            <param name="musicName">Non null string.</param>
+            <returns>Non null string.</returns>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.Parsers.MusicKillerParser.Process(System.String,PoLaKoSz.MusicFM.Parsers.ICleaner)">
+            <summary>
+            Extract the <see cref="T:PoLaKoSz.MusicFM.Models.Track"/>s from the HTML.
+            </summary>
+            <param name="sourceCode">Non null string.</param>
+            <param name="clean">Non null custom cleaning object.</param>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Track"/> collection.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:PoLaKoSz.MusicFM.Parsers.TimelineParser.Process(System.String,PoLaKoSz.MusicFM.Parsers.ICleaner)">
+            <summary>
+            Extract <see cref="T:PoLaKoSz.MusicFM.Models.Track"/>s from the JSON.
+            </summary>
+            <param name="json">Non null string.</param>
+            <param name="clean"></param>
+            <returns>Non null <see cref="T:PoLaKoSz.MusicFM.Models.Track"/> collection.</returns>
+            <exception cref="T:HtmlAgilityPack.NodeNotFoundException"></exception>
+        </member>
+    </members>
+</doc>
