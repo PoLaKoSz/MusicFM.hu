@@ -9,7 +9,7 @@
     <RepositoryUrl>https://github.com/PoLaKoSz/MusicFM.hu</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>musicfm netstandard wrapper api scraper musicfm.hu</PackageTags>
-    <PackageLicenseUrl>https://github.com/PoLaKoSz/MusicFM.hu/LICENCE</PackageLicenseUrl>
+    <PackageLicenseUrl>https://github.com/PoLaKoSz/MusicFM.hu/LICENSE</PackageLicenseUrl>
     <PackageId>MusicFM.hu</PackageId>
     <Product>MusicFM.hu</Product>
     <NeutralLanguage>en</NeutralLanguage>
