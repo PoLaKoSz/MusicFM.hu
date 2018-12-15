@@ -38,5 +38,16 @@ namespace PoLaKoSz.MusicFM.Tests.Integration
         {
             HttpClient.ResponseFromServer = File.ReadAllText(Path.Combine(_path, $"{fileName}.html"));
         }
+
+        /// <summary>
+        /// Get the source code from a previously saved file.
+        /// </summary>
+        /// <param name="fileName">Non null file name WITH extension
+        /// and relative or absolute path.</param>
+        /// <returns>Non null string.</returns>
+        protected void SetResponseFromServer(string fileName)
+        {
+            HttpClient.ResponseFromServer = File.ReadAllText(Path.Combine(_path, fileName));
+        }
     }
 }

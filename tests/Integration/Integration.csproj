@@ -78,7 +78,7 @@
     <None Update="StaticResources\MusicKillers\zoohacker.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="StaticResources\timeline.html">
+    <None Update="StaticResources\HomePage\timeline.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
