@@ -13,9 +13,11 @@
     <PackageId>MusicFM.hu</PackageId>
     <Product>MusicFM.hu</Product>
     <NeutralLanguage>en</NeutralLanguage>
-    <PackageReleaseNotes>First stable release. The enty point to the library is the MusicFM class. NuGet package now contains the XML documentation.</PackageReleaseNotes>
+    <PackageReleaseNotes>Fixes "Couldn't find songs with the given XPath!" Exception when the timeline tracklist is 0.</PackageReleaseNotes>
     <Description>MusicFM.hu is the one of the most popular radio station in Hungary. This is a .NET Standard 2.0 library to can access the Timeline, every MusicKIller DJ's tracklist and the two chart (TOP 20 and TOP 50).</Description>
-    <Version>1.0.1.1</Version>
+    <Version>1.0.2</Version>
+    <AssemblyVersion>1.0.2.0</AssemblyVersion>
+    <FileVersion>1.0.2.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

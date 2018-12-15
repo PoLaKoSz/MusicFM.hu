@@ -17,6 +17,9 @@ namespace PoLaKoSz.MusicFM.Parsers
         /// <exception cref="NodeNotFoundException"></exception>
         internal static List<Track> Process(string json, ICleaner clean)
         {
+            if (json.StartsWith("{\"count\":0,"))
+                return new List<Track>();
+            
             // If this not here, HtmlAgilityPack can't work
             json = UnicodeCharactersToASCII(json).Replace(@"\/", "/");
 

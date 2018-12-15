@@ -27,6 +27,9 @@
     <None Update="StaticResources\Charts\50\all.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="StaticResources\HomePage\timeline.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="StaticResources\MusicKillers\antonyo.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
